@@ -1,4 +1,8 @@
-(function(global) {
+(function(name, definition) {
+    if (typeof module != 'undefined') module.exports = definition();
+    else if (typeof define == 'function' && typeof define.amd == 'object') define(definition);
+    else this[name] = definition();
+}('skycons', function() {
   "use strict";
 
   /* Set up a RequestAnimationFrame shim so we can animate efficiently FOR
@@ -726,5 +730,5 @@
     }
   };
 
-  global.Skycons = Skycons;
-}(this));
+  return Skycons;
+}));
